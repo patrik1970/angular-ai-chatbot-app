@@ -1,0 +1,23 @@
+
+<!-- src/app/chatbot/chatbot.component.html -->
+<mat-card class="chatbot-container">
+    <mat-toolbar color="primary">
+      <span>Chatbot</span>
+      <button mat-icon-button (click)="isEmojiPickerVisible = !isEmojiPickerVisible">
+        <mat-icon>sentiment_satisfied</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="chat-body">
+      <div *ngFor="let message of chatMessages" [ngClass]="message.role">
+        <div class="message-text">{{ message.content }}</div>
+      </div>
+    </div>
+    <mat-form-field class="chat-input">
+      <textarea matInput [(ngModel)]="userData.message" placeholder="Message..."></textarea>
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="sendMessage()">
+      <mat-icon>send</mat-icon>
+    </button>
+        <em-emoji-picker *ngIf="isEmojiPickerVisible" (emojiClick)="onEmojiClick($event)"></em-emoji-picker>
+  </mat-card>
+  
