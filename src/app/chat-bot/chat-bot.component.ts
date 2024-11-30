@@ -19,6 +19,8 @@ export class ChatBotComponent {
   chatMessages: { role: string; content: string; }[] = [];
   isEmojiPickerVisible: boolean = false;
 
+  isChatbotOpen: boolean = false;
+
   constructor(private chatService: ChatService) {}
 
   onEmojiClick(event: any) {
@@ -51,5 +53,9 @@ export class ChatBotComponent {
       });
       
     }
+  }
+
+  toggleChatbot() {
+    this.isChatbotOpen = !this.isChatbotOpen;  
   }
 }
